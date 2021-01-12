@@ -21,6 +21,7 @@ namespace TriviaQuizGame
 	/// </summary>
 	public class TQGGameController : MonoBehaviour
 	{
+		public static TQGGameController tQG;
 		// Holds the current event system
 		internal EventSystem eventSystem;
 
@@ -111,7 +112,10 @@ namespace TriviaQuizGame
 		// The size of the progress tab. This is calculated automatically and used to align the progress bar to the center.
 		internal float progressTabSize;
 
-		[Tooltip("Limit the total number of questions asked, regardless of whether we answered correctly or not. Use this if you want to have a strict number of questions asked in the game (ex: 10 questions). If you keep it at 0 the number of questions will not be limited and you will go through all the question groups in the quiz before finishing it")]
+		[Tooltip("Limit the total number of questions asked, regardless of whether we answered correctly or not." +
+			"Use this if you want to have a strict number of questions asked in the game (ex: 10 questions)." +
+			"If you keep it at 0 the number of questions will not be limited and you will go through all the " +
+			"question groups in the quiz before finishing it")]
 		public int questionLimit = 0;
 
 		// The total number of questions we asked. This is used to check if we reached the question limit.
@@ -238,15 +242,27 @@ namespace TriviaQuizGame
 		public GameObject QustionPanel;
 		public int[] answers;
 		public int questionCounter = 0;
-		// method:
-		// int counterFalse, counter true.
-		// if player answers true then counterTrue++
-		//
 
+        //Flow:
+        /*		 
+		 * 
+		 * 
+		 * insert balls in an array.
+		 * if answer is 0
+		 *  balls[i].color = red
+		 * else
+		 *  balls[i].color = green
+		 * 
+		 * 
+		 */
 
-		// My new methods.
-		// Powerups!				
-		public void AddTime()
+        // My new methods.
+        // Powerups!
+        private void Awake()
+        {
+			tQG = this;
+        }
+        public void AddTime()
 		{
 			globalTime += 30;
 			timeLeft = globalTime;
@@ -293,6 +309,7 @@ namespace TriviaQuizGame
 		/// </summary>
 		void Start()
 		{
+			answers = new int[3];
 			// Disable multitouch so that we don't tap two answers at the same time ( prevents multi-answer cheating, thanks to Miguel Paolino for catching this bug )
 			Input.multiTouchEnabled = false;
 
@@ -981,7 +998,7 @@ namespace TriviaQuizGame
 				//if ( answerObjects[answerIndex].Find("Text").GetComponent<Text>().text != questions[currentQuestion].correctAnswer )
 				if (questions[currentQuestion].answers[answerIndex].isCorrect == false)
 				{
-					answers[questionCounter] = 1;
+					answers[questionCounter] = 0;
 					// Play the animation Wrong
 					if (animationWrong)
 					{
@@ -1059,7 +1076,7 @@ namespace TriviaQuizGame
 				}
 				else // Choosing the correct answer
 				{
-					answers[questionCounter] = 0;
+					answers[questionCounter] = 1;
 
 					// If we answered correctly this round, increase the question count for this bonus group
 					questionCount++;
@@ -1198,23 +1215,21 @@ namespace TriviaQuizGame
 
 		public void GoodQuestion()
 		{
-			
+
 		}
 
 		public void BadQuestion()
 		{
-			
+
 		}
 
-		public  void NextQuestion()
+		public void NextQuestion()
 		{
 			QustionPanel.SetActive(true);
 			QusttionRate.SetActive(false);
 			Time.timeScale = 1;
 			questionCounter++;
 			StartCoroutine(AskQuestion(true));
-
-
 		}
 
 		/// <summary>
@@ -1485,6 +1500,8 @@ namespace TriviaQuizGame
 			{
 				//Show the victory screen
 				victoryCanvas.gameObject.SetActive(true);
+
+
 
 				// If we have a TextScore and TextHighScore objects, then we are using the single player victory canvas
 				if (victoryCanvas.Find("ScoreTexts/TextScore") && victoryCanvas.Find("ScoreTexts/TextHighScore"))
@@ -1807,7 +1824,7 @@ namespace TriviaQuizGame
 					// Assign the sound to the right slot in the game controller. All sounds should be placed in the Resources/Sounds/ path. You should enter the name of the sound without the path and without an extension (ex; .mp3 )
 					if (XmlQuestion.Name == "Sound") questionsTemp[questionIndex].sound = Resources.Load<AudioClip>("Sounds/" + XmlQuestion.InnerText);
 
-					
+
 
 					// Assign the bonus value to the right slot in the game controller
 					if (XmlQuestion.Name == "Bonus") questionsTemp[questionIndex].bonus = int.Parse(XmlQuestion.InnerText);
