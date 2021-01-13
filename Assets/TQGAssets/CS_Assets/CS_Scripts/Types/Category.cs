@@ -3,7 +3,6 @@
 using System;
 using UnityEngine;
 using System.Xml;
-using TriviaQuizGame.Types;
 
 namespace TriviaQuizGame.Types
 {

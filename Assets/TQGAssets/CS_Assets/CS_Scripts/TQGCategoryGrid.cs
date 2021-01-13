@@ -11,7 +11,7 @@ namespace TriviaQuizGame
 	/// <summary>
 	/// Includes functions for loading levels and URLs. It's intended for use with UI Buttons
 	/// </summary>
-	public class TQGCategoryGrid:MonoBehaviour
+	public class TQGCategoryGrid : MonoBehaviour
 	{
 		// Various objects we cache for quicker access
 		internal RectTransform categoryGridObject;
@@ -19,7 +19,8 @@ namespace TriviaQuizGame
 		internal Transform thisTransform;
 		internal GameObject gameController;
 
-		[Tooltip("The number of the first few categories that will be unlocked by default, regardless of whether we completed them or not")]
+		[Tooltip("The number of the first few categories that will be unlocked by default, " +
+			"regardless of whether we completed them or not")]
 		public int startingCategories = 3;
 
 		[Tooltip("The message that appears when the current category is locked")]
@@ -34,7 +35,7 @@ namespace TriviaQuizGame
 		// The current category we have selected
 		internal int currentCategory = 0;
 		internal GameObject currentCategoryObject;
-		
+
 		// General use index
 		internal int index;
 		internal int[] categoryIndex;
@@ -49,43 +50,45 @@ namespace TriviaQuizGame
 		void Start()
 		{
 			thisTransform = transform;
-			
+
 			// Hold the gamecontroller for easier access
-			if ( GameObject.FindGameObjectWithTag("GameController") )    gameController = GameObject.FindGameObjectWithTag("GameController");
-			
+			if (GameObject.FindGameObjectWithTag("GameController")) 
+				gameController = GameObject.FindGameObjectWithTag("GameController");
+
 			// If we have a category grid, cache the category grid and category object for quicker access
-			if ( GameObject.Find("CategoryGrid") )    
+			if (GameObject.Find("CategoryGrid"))
 			{
 				// Hold the category grid
 				categoryGridObject = GameObject.Find("CategoryGrid").GetComponent<RectTransform>();
-				
+
 				// And all the internal parts
-				if ( GameObject.Find("CategoryGrid/Category") )    categoryObject = GameObject.Find("CategoryGrid/Category").GetComponent<RectTransform>();
+				if (GameObject.Find("CategoryGrid/Category")) 
+					categoryObject = GameObject.Find("CategoryGrid/Category").GetComponent<RectTransform>();
 			}
-			
+
 			// If we have a category wheel or grid, organize the categories in the wheel or grid
-			if ( categoryGridObject && categoryObject )
+			if (categoryGridObject && categoryObject)
 			{
-				//Duplicate the the category object several times to accomodate the number of categories we have
-				for ( index = 0 ; index < categories.Length ; index++ )
+				//Duplicate the category object several times to accomodate the number of categories we have
+				for (index = 0; index < categories.Length; index++)
 				{
 					// Duplicate the category object
 					RectTransform newCategory = Instantiate(categoryObject) as RectTransform;
-					
+
 					// Put it inside the category wheel
 					newCategory.SetParent(categoryGridObject.transform);
-					
+
 					// Set the position and scale of the category to be the same as the default one
 					newCategory.sizeDelta = categoryObject.sizeDelta;
 					newCategory.position = categoryObject.position;
 					newCategory.localScale = categoryObject.localScale;
-					
+
 					// Set the text of the slice based on the category name
 					newCategory.Find("Text").GetComponent<Text>().text = categories[index].categoryName;
-					
+
 					// Hold a reference for this category, for easier access
 					categories[index].categoryObject = newCategory.gameObject;
-					
+
 					// Set the icon of the category based on the category icon
 					newCategory.Find("Icon").GetComponent<Image>().sprite = categories[index].categoryIcon;
 
@@ -96,7 +99,8 @@ namespace TriviaQuizGame
 					tempIndex = index;
 
 					// If the category is completed, open the 
-					if ( index < startingCategories || ( index > 0 && PlayerPrefs.GetInt( categories[index-1].categoryName + "Completed", 0) == 1) )
+					if (index < startingCategories || (index > 0 && 
+						PlayerPrefs.GetInt(categories[index - 1].categoryName + "Completed", 0) == 1))
 					{
 						// Listen for a click to choose the category
 						//newCategory.GetComponent<Button>().onClick.AddListener(delegate() { SetCategory(tempIndex); });
@@ -116,18 +120,18 @@ namespace TriviaQuizGame
 						newCategory.GetComponent<Image>().color = lockedColor;
 					}
 				}
-				
+
 				// Deactivate the original category object
 				categoryObject.gameObject.SetActive(false);
 			}
 
 			// Calculate the height of the category grid so that it can accomodate all category tabs
-			if ( categoryGridObject ) 
+			if (categoryGridObject)
 			{
 				// Calculate the height required to accomodate all category tabs, based on a tab height, spacing, and number of columns in the grid
-				float gridHeight = (categories.Length/categoryGridObject.GetComponent<GridLayoutGroup>().constraintCount) * (categoryGridObject.GetComponent<GridLayoutGroup>().cellSize.y + categoryGridObject.GetComponent<GridLayoutGroup>().spacing.y);
+				float gridHeight = (categories.Length / categoryGridObject.GetComponent<GridLayoutGroup>().constraintCount) * (categoryGridObject.GetComponent<GridLayoutGroup>().cellSize.y + categoryGridObject.GetComponent<GridLayoutGroup>().spacing.y);
 
-				categoryGridObject.sizeDelta = new Vector2( categoryGridObject.sizeDelta.x, gridHeight);
+				categoryGridObject.sizeDelta = new Vector2(categoryGridObject.sizeDelta.x, gridHeight);
 			}
 		}
 
@@ -135,19 +139,19 @@ namespace TriviaQuizGame
 		/// <summary>
 		/// Set the current category from the list. Will go through all categories before repeating.
 		/// </summary>
-		public void SetCategory( int setValue )
+		public void SetCategory(int setValue)
 		{
 			// If we have a category grid
-			if ( categoryGridObject ) 
+			if (categoryGridObject)
 			{
 				// Check if the category has a Dynamic XML component
-				if ( categories[setValue].GetComponent<TQGDynamicXML>() )
+				if (categories[setValue].GetComponent<TQGDynamicXML>())
 				{
 					// Add a Dynamic XML component to the gamecontroller, and copy the info from the one attached to the category
 					gameController.AddComponent<TQGDynamicXML>();
 					gameController.GetComponent<TQGDynamicXML>().addressType = categories[setValue].GetComponent<TQGDynamicXML>().addressType;
 					gameController.GetComponent<TQGDynamicXML>().xmlAddress = categories[setValue].GetComponent<TQGDynamicXML>().xmlAddress;
-					
+
 					// Assign the dynamic XML to the variable in the gamecontroller, so that it checks for it when we start the game
 					gameController.GetComponent<TQGGameController>().dynamicXML = gameController.GetComponent<TQGDynamicXML>();
 				}
@@ -159,12 +163,12 @@ namespace TriviaQuizGame
 					// Set the name of the category based on the current category
 					gameController.SendMessage("SetCategoryName", categories[setValue].categoryName);
 				}
-				
+
 				// Start the game
 				gameController.SendMessage("StartGame");
 			}
 		}
-		
+
 		/// <summary>
 		/// Set the next category when this screen is activated
 		/// </summary>
@@ -177,6 +181,7 @@ namespace TriviaQuizGame
 		{
 			SetCategory(tempIndex);
 			gameObject.SetActive(false);
+			GameManager.gameManager.clickedButton.SetActive(false);
 		}
 	}
 }

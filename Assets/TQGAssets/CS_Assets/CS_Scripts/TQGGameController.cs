@@ -35,7 +35,10 @@ namespace TriviaQuizGame
 		internal string currentCategory;
 
 		[Header("<Player Options>")]
-		[Tooltip("A list of the players in the game. Each player can be assigned a name, a score text, lives and lives bar. You must have at least one player in the list in order to play the game. You don't need to assign all fields. For example, a player may have a name with no lives bar and it will work fine.")]
+		[Tooltip("A list of the players in the game. " +
+			"Each player can be assigned a name, a score text, lives and lives bar." +
+			"You must have at least one player in the list in order to play the game. " +
+			"You don't need to assign all fields. For example, a player may have a name with no lives bar and it will work fine.")]
 		public Player[] players;
 
 		//The current turn of the player. 0 means it's player 1's turn to play, 1 means it's player 2's turn, etc
@@ -47,10 +50,12 @@ namespace TriviaQuizGame
 		[Tooltip("The number of lives each player has. You lose a life if time runs out, or you answer wrongly too many times")]
 		public float lives = 3;
 
-		// The width of a single life in the lives bar. This is calculated from the total width of a life bar divided by the number of lives
+		// The width of a single life in the lives bar. 
+		// This is calculated from the total width of a life bar divided by the number of lives
 		internal float livesBarWidth = 128;
 
-		[Tooltip("The number of players participating in the match. This number cannot be larger than the total number of players list ( The ones that you assign a scoreText/livesBar to )")]
+		[Tooltip("The number of players participating in the match. " +
+			"This number cannot be larger than the total number of players list ( The ones that you assign a scoreText/livesBar to )")]
 		public int numberOfPlayers = 4;
 
 		internal RectTransform playersObject;
@@ -244,15 +249,9 @@ namespace TriviaQuizGame
 		public int questionCounter = 0;
 
         //Flow:
-        /*		 
-		 * 
-		 * 
-		 * insert balls in an array.
-		 * if answer is 0
-		 *  balls[i].color = red
-		 * else
-		 *  balls[i].color = green
-		 * 
+        /* 
+         *  
+         * 
 		 * 
 		 */
 
@@ -308,15 +307,17 @@ namespace TriviaQuizGame
 		/// This allows you to order initialization of scripts
 		/// </summary>
 		void Start()
-		{
+		{			
 			answers = new int[3];
-			// Disable multitouch so that we don't tap two answers at the same time ( prevents multi-answer cheating, thanks to Miguel Paolino for catching this bug )
+			// Disable multitouch so that we don't tap two answers at the same time 
+			// ( prevents multi-answer cheating, thanks to Miguel Paolino for catching this bug )
 			Input.multiTouchEnabled = false;
 
 			// Cache the current event system so we can enable and disable it between questions
 			eventSystem = UnityEngine.EventSystems.EventSystem.current;
 
-			// If the quiz is running on a mobile platform ( iOS, Android, etc ), disable the Standalone Input Module, so that gamepad can't take over
+			// If the quiz is running on a mobile platform ( iOS, Android, etc ), 
+			// disable the Standalone Input Module, so that gamepad can't take over
 			if (SystemInfo.deviceType == DeviceType.Handheld)
 			{
 				eventSystem.GetComponent<StandaloneInputModule>().enabled = false;
@@ -362,7 +363,8 @@ namespace TriviaQuizGame
 			SetNumberOfPlayers(numberOfPlayers);
 
 			//Assign the sound source for easier access
-			if (GameObject.FindGameObjectWithTag(soundSourceTag)) soundSource = GameObject.FindGameObjectWithTag(soundSourceTag);
+			if (GameObject.FindGameObjectWithTag(soundSourceTag)) 
+				soundSource = GameObject.FindGameObjectWithTag(soundSourceTag);
 
 			// Clear the bonus object text
 			if (bonusObject) bonusObject.Find("Text").GetComponent<Text>().text = "";
@@ -371,14 +373,18 @@ namespace TriviaQuizGame
 			questionObject.Find("Text").GetComponent<Text>().text = "";
 
 			// Hide the CONTINUE button that moves to the next question
-			if (questionObject.Find("ButtonContinue")) questionObject.Find("ButtonContinue").gameObject.SetActive(false);
+			if (questionObject.Find("ButtonContinue")) 
+				questionObject.Find("ButtonContinue").gameObject.SetActive(false);
 
 			// Assign the image and video objects from inside the question object
-			if (questionObject.Find("Image")) imageObject = questionObject.Find("Image").GetComponent<RectTransform>();
-			if (questionObject.Find("Video")) videoObject = questionObject.Find("Video").gameObject;
+			if (questionObject.Find("Image")) 
+				imageObject = questionObject.Find("Image").GetComponent<RectTransform>();
+			if (questionObject.Find("Video")) 
+				videoObject = questionObject.Find("Video").gameObject;
 
 			// Hide the sound button, since we don't need it yet
-			if (questionObject.Find("ButtonPlaySound")) questionObject.Find("ButtonPlaySound").gameObject.SetActive(false);
+			if (questionObject.Find("ButtonPlaySound")) 
+				questionObject.Find("ButtonPlaySound").gameObject.SetActive(false);
 
 			// Clear the question image and video, if they exist
 			if (imageObject) imageObject.gameObject.SetActive(false);
@@ -717,19 +723,22 @@ namespace TriviaQuizGame
 						if (currentQuestion >= questions.Length) break;
 
 						// Check if the question has already been used, and if so, ask another question instead
-						if (dontRepeatQuestions == true && PlayerPrefs.HasKey(questions[currentQuestion].question)) questionIsUsed = true;
+						if (dontRepeatQuestions == true && PlayerPrefs.HasKey(questions[currentQuestion].question)) 
+							questionIsUsed = true;
 					}
 
 					// Animate the question
 					if (animationQuestion)
 					{
 						// If the animation clip doesn't exist in the animation component, add it
-						if (questionObject.GetComponent<Animation>().GetClip(animationQuestion.name) == null) questionObject.GetComponent<Animation>().AddClip(animationQuestion, animationQuestion.name);
+						if (questionObject.GetComponent<Animation>().GetClip(animationQuestion.name) == null)
+							questionObject.GetComponent<Animation>().AddClip(animationQuestion, animationQuestion.name);
 
 						// Play the animation
 						questionObject.GetComponent<Animation>().Play(animationQuestion.name);
 
-						// Wait for half the animation time, then display the next question. This will make the question appear while the question tab flips. Just a nice effect
+						// Wait for half the animation time, then display the next question.
+						// This will make the question appear while the question tab flips. Just a nice effect
 						yield return new WaitForSeconds(questionObject.GetComponent<Animation>().clip.length * 0.5f);
 					}
 
@@ -1226,7 +1235,7 @@ namespace TriviaQuizGame
 		public void NextQuestion()
 		{
 			QustionPanel.SetActive(true);
-			QusttionRate.SetActive(false);
+			//QusttionRate.SetActive(false);
 			Time.timeScale = 1;
 			questionCounter++;
 			StartCoroutine(AskQuestion(true));
@@ -1301,7 +1310,8 @@ namespace TriviaQuizGame
 			eventSystem.SetSelectedGameObject(null);
 
 			// Ask the next question
-			QustionRate();
+			//QustionRate();
+			StartCoroutine(AskQuestion(true));
 		}
 
 		/// <summary>
@@ -1451,6 +1461,8 @@ namespace TriviaQuizGame
 				//Show the game over screen
 				gameOverCanvas.gameObject.SetActive(true);
 
+				GameManager.gameManager.AiScoreGenrator();				
+
 				//Write the score text, if it exists
 				if (gameOverCanvas.Find("ScoreTexts/TextScore"))
 				{
@@ -1500,8 +1512,7 @@ namespace TriviaQuizGame
 			{
 				//Show the victory screen
 				victoryCanvas.gameObject.SetActive(true);
-
-
+				GameManager.gameManager.AiScoreGenrator();
 
 				// If we have a TextScore and TextHighScore objects, then we are using the single player victory canvas
 				if (victoryCanvas.Find("ScoreTexts/TextScore") && victoryCanvas.Find("ScoreTexts/TextHighScore"))
@@ -1978,7 +1989,8 @@ namespace TriviaQuizGame
 		}
 
 		/// <summary>
-		/// Sets the name of the category from an external category grid. This is used when getting the category name from a category grid
+		/// Sets the name of the category from an external category grid. 
+		/// This is used when getting the category name from a category grid
 		/// </summary>
 		/// <param name="setValue">Set value.</param>
 		public void SetCategoryName(string setValue)
@@ -1992,7 +2004,8 @@ namespace TriviaQuizGame
 		public void SkipQuestion()
 		{
 			// Stop listening for a click on the button to move to the next question
-			if (questionObject.GetComponent<Button>()) questionObject.GetComponent<Button>().onClick.RemoveAllListeners();
+			if (questionObject.GetComponent<Button>())
+				questionObject.GetComponent<Button>().onClick.RemoveAllListeners();
 
 			// Reset the question and answers in order to display the next question
 			StartCoroutine(ResetQuestion(0.5f));

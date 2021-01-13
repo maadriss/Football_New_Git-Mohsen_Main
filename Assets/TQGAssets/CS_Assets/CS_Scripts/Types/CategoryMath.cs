@@ -158,7 +158,7 @@ namespace TriviaQuizGame
 		public void CreateQuestions()
 		{
 			// Create a list of questions based on the total number of questions in the math quiz
-			questions = new Question[totalLevels * questionsPerLevel];
+			questions = new Question[3];
 
 			// Go through the list of questions we created and fill them up
 			for ( index = 0; index < questions.Length ; index++ )

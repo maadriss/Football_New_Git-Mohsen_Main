@@ -237,6 +237,83 @@ RectTransform:
   m_AnchoredPosition: {x: 9.535629, y: -48.100098}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &74728832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 74728833}
+  - component: {fileID: 74728834}
+  m_Layer: 5
+  m_Name: Category6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &74728833
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74728832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 614640229136057632}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &74728834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74728832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814527ed6b5820247a732f012786e2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  categoryName: "\uFEE5\uFE8D\uFEAE\uFEEC\uFE97 \uFB93\uFBFF\uFEDF"
+  categoryIcon: {fileID: 0}
+  categoryColor: {r: 0, g: 0.84771323, b: 0.9, a: 1}
+  questions:
+  - question: "\u061F\uFEAA\uFEE7\uFEAD\uFE8D\uFEA9 \uFBFD\uFE98\uFE92\uFEB4\uFEE7
+      \uFEEA\uFB7C \uFEAE\uFED0\uFEBB\uFE8D \uFE8E\uFE91 \uFE8F\uFE8E\uFED8\uFECB
+      \uFEE2\uFBFF\uFE97 \uFEAD\uFEA9 \uFEAE\uFE92\uFB90\uFE8D "
+    image: {fileID: 0}
+    sound: {fileID: 0}
+    answers:
+    - answer: "\uFEEA\uFEE7\uFEEE\uFEE4\uFBFF\uFEB3 \uFEDE\uFBFE\uFEAE\uFE91\uFE8E\uFB94"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    - answer: "\uFEE5\uFE8D\uFEAA\uFBFE\uFEAF \uFEE6\uFBFE\uFEAA\uFEDF\uFE8D \uFEE6\uFBFE\uFEAF"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 1
+    - answer: "\uFEB2\uFE98\uFBFF\uFEE8\uFE91 \uFEDE\uFBFE\uFE8E\uFED3\uFE8D\uFEAD"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    - answer: "\uFEDD\uFEEE\uFB95\uFBFF\uFEE3 \uFED2\uFE98\uFEB4\uFBFE\uFEAE\uFB90"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    followup: 
+    bonus: 0
+    time: 0
 --- !u!1 &145243805
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +387,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145243805}
   m_CullTransparentMesh: 0
+--- !u!1 &165155043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165155044}
+  - component: {fileID: 165155045}
+  m_Layer: 5
+  m_Name: Category4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &165155044
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165155043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 614640229136057632}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &165155045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165155043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814527ed6b5820247a732f012786e2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  categoryName: "\uFEAF\uFE8D\uFEAE\uFBFF\uFEB7 \uFB93\uFBFF\uFEDF"
+  categoryIcon: {fileID: 0}
+  categoryColor: {r: 0, g: 0.84771323, b: 0.9, a: 1}
+  questions:
+  - question: "\u061F\uFEAA\uFEE7\uFEAD\uFE8D\uFEA9 \uFBFD\uFE98\uFE92\uFEB4\uFEE7
+      \uFEEA\uFB7C \uFEAE\uFED0\uFEBB\uFE8D \uFE8E\uFE91 \uFE8F\uFE8E\uFED8\uFECB
+      \uFEE2\uFBFF\uFE97 \uFEAD\uFEA9 \uFEAE\uFE92\uFB90\uFE8D "
+    image: {fileID: 0}
+    sound: {fileID: 0}
+    answers:
+    - answer: "\uFEEA\uFEE7\uFEEE\uFEE4\uFBFF\uFEB3 \uFEDE\uFBFE\uFEAE\uFE91\uFE8E\uFB94"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    - answer: "\uFEE5\uFE8D\uFEAA\uFBFE\uFEAF \uFEE6\uFBFE\uFEAA\uFEDF\uFE8D \uFEE6\uFBFE\uFEAF"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 1
+    - answer: "\uFEB2\uFE98\uFBFF\uFEE8\uFE91 \uFEDE\uFBFE\uFE8E\uFED3\uFE8D\uFEAD"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    - answer: "\uFEDD\uFEEE\uFB95\uFBFF\uFEE3 \uFED2\uFE98\uFEB4\uFBFE\uFEAE\uFB90"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    followup: 
+    bonus: 0
+    time: 0
 --- !u!1 &188345206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6064,8 +6218,8 @@ MonoBehaviour:
   randomizeQuestions: 0
   sortQuestions: 1
   dontRepeatQuestions: 0
-  questionsPerGroup: 10
-  questionLimit: 0
+  questionsPerGroup: 6
+  questionLimit: 6
   maximumMistakes: 0
   globalTime: 15
   timeLoss: 2
@@ -6076,8 +6230,8 @@ MonoBehaviour:
   imageCloseupZoom: 0
   bonusObject: {fileID: 398857238}
   startCanvas: {fileID: 614640229136057632}
-  gameOverCanvas: {fileID: 1460416786}
-  victoryCanvas: {fileID: 1460416786}
+  gameOverCanvas: {fileID: 0}
+  victoryCanvas: {fileID: 0}
   largerImageCanvas: {fileID: 0}
   mainMenuLevelName: MainMenu
   quizFollowup: 
@@ -7281,11 +7435,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 614640229136057632}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000023842, y: -225.8}
+  m_AnchoredPosition: {x: -0, y: -225.8}
   m_SizeDelta: {x: 155.07, y: 70.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281925129
@@ -10470,6 +10624,11 @@ MonoBehaviour:
   - {fileID: 6288685765447136760}
   - {fileID: 6288685766059656805}
   - {fileID: 6288685766251478439}
+  AiBallImage:
+  - {fileID: 6288685765957268167}
+  - {fileID: 6288685765863360345}
+  - {fileID: 6288685765569699896}
+  clickedButton: {fileID: 0}
 --- !u!1 &1635798769
 GameObject:
   m_ObjectHideFlags: 0
@@ -11204,6 +11363,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1834478431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1834478432}
+  - component: {fileID: 1834478433}
+  m_Layer: 5
+  m_Name: Category5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1834478432
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834478431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 614640229136057632}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1834478433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834478431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814527ed6b5820247a732f012786e2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  categoryName: "\uFEA9\uFEB0\uFBFE \uFB93\uFBFF\uFEDF"
+  categoryIcon: {fileID: 0}
+  categoryColor: {r: 0, g: 0.84771323, b: 0.9, a: 1}
+  questions:
+  - question: "\u061F\uFEAA\uFEE7\uFEAD\uFE8D\uFEA9 \uFBFD\uFE98\uFE92\uFEB4\uFEE7
+      \uFEEA\uFB7C \uFEAE\uFED0\uFEBB\uFE8D \uFE8E\uFE91 \uFE8F\uFE8E\uFED8\uFECB
+      \uFEE2\uFBFF\uFE97 \uFEAD\uFEA9 \uFEAE\uFE92\uFB90\uFE8D "
+    image: {fileID: 0}
+    sound: {fileID: 0}
+    answers:
+    - answer: "\uFEEA\uFEE7\uFEEE\uFEE4\uFBFF\uFEB3 \uFEDE\uFBFE\uFEAE\uFE91\uFE8E\uFB94"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    - answer: "\uFEE5\uFE8D\uFEAA\uFBFE\uFEAF \uFEE6\uFBFE\uFEAA\uFEDF\uFE8D \uFEE6\uFBFE\uFEAF"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 1
+    - answer: "\uFEB2\uFE98\uFBFF\uFEE8\uFE91 \uFEDE\uFBFE\uFE8E\uFED3\uFE8D\uFEAD"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    - answer: "\uFEDD\uFEEE\uFB95\uFBFF\uFEE3 \uFED2\uFE98\uFEB4\uFBFE\uFEAE\uFB90"
+      image: {fileID: 0}
+      sound: {fileID: 0}
+      isCorrect: 0
+    followup: 
+    bonus: 0
+    time: 0
 --- !u!1 &1867760920
 GameObject:
   m_ObjectHideFlags: 0
@@ -12365,6 +12601,9 @@ RectTransform:
   - {fileID: 2053493318}
   - {fileID: 1581471965}
   - {fileID: 1867760921}
+  - {fileID: 165155044}
+  - {fileID: 1834478432}
+  - {fileID: 74728833}
   - {fileID: 1281925128}
   m_Father: {fileID: 1830721363}
   m_RootOrder: 3
@@ -12657,6 +12896,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 614640229158568560}
         m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1628432810}
+        m_MethodName: Selected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
